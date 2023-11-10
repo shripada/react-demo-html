@@ -34,18 +34,11 @@
     </style>
   </head>
   <body>
-    <div class="counter">
+    <!-- <div class="counter">
       <h1 id="counter">0</h1>
       <button onclick="increment()">Increment</button>
       <button onclick="decrement()">Decrement</button>
-    </div>
-
-    <div class="counter">
-      <h1 id="counter">0</h1>
-      <button onclick="increment()">Increment</button>
-      <button onclick="decrement()">Decrement</button>
-    </div>
-
+    </div> -->
     <script>
       var count = 0;
 
@@ -62,6 +55,44 @@
         count--;
         updateCounter();
       }
+    </script>
+
+    <script>
+      function createCounter() {
+        let count = 0;
+        // create a div element and then a h1 for counter and two buttons for inc and dec
+        // return the div element
+        const div = document.createElement('div');
+        div.classList = 'counter';
+        // create a h1 for the counter with id counter
+        const h1 = document.createElement('h1');
+        h1.innerText = count;
+        // create two buttons for inc and dec
+        const incBtn = document.createElement('button');
+        incBtn.innerText = 'Increment';
+        incBtn.onclick = () => {
+          count++;
+          h1.innerText = count;
+        };
+        const decBtn = document.createElement('button');
+        decBtn.innerText = 'Decrement';
+        decBtn.onclick = () => {
+          count--;
+          h1.innerText = count;
+        };
+        // append the h1 and buttons to the div
+        div.appendChild(h1);
+        div.appendChild(incBtn);
+        div.appendChild(decBtn);
+        // return the div
+        return div;
+      }
+
+      const counter1 = createCounter();
+      const counter2 = createCounter();
+      // append the above to body
+      document.body.appendChild(counter1);
+      document.body.appendChild(counter2);
     </script>
   </body>
 </html>
