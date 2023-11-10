@@ -58,38 +58,45 @@
         function onClick(inc) {
           setCount(count + inc);
         }
-        return React.createElement(
-          'div',
-          { class: 'counter' },
-          React.createElement('h1', null, count),
-          React.createElement(
-            'button',
-            { onClick: () => onClick(1) },
-            'Increment'
-          ),
-          React.createElement(
-            'button',
-            { onClick: () => onClick(-1) },
-            'Decrement'
-          )
+        // return React.createElement(
+        //   'div',
+        //   { class: 'counter' },
+        //   React.createElement('h1', null, count),
+        //   React.createElement(
+        //     'button',
+        //     { onClick: () => onClick(1) },
+        //     'Increment'
+        //   ),
+        //   React.createElement(
+        //     'button',
+        //     { onClick: () => onClick(-1) },
+        //     'Decrement'
+        //   )
+        // );
+        return (
+          <div className="counter">
+            <h1>{count}</h1>
+            <button onClick={() => onClick(1)}>Increment</button>
+            <button onClick={() => onClick(-1)}>Decrement</button>
+          </div>
         );
       };
 
-      // JSX syntax is like html, but it's not html
-      //   const counter = (
-      //     <div class="counter">
-      //       <h1 id="counter">0</h1>
-      //       <button>Increment</button>
-      //       <button>Decrement</button>
-      //     </div>
-      //   );
+      const TwoCounters = () => {
+        return (
+          <div>
+            <Counter />
+            <Counter />
+          </div>
+        );
+      };
 
       console.info(Counter);
 
       const root = ReactDOM.createRoot(document.getElementById('root'));
 
       // Render the counter component into the browser's DOM.
-      root.render(<Counter />);
+      root.render(<TwoCounters />);
     </script>
   </body>
 </html>
