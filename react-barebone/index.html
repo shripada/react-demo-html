@@ -58,20 +58,28 @@
         function onClick(inc) {
           setCount(count + inc);
         }
-        return React.createElement(
-          'div',
-          { class: 'counter' },
-          React.createElement('h1', null, count),
-          React.createElement(
-            'button',
-            { onClick: () => onClick(1) },
-            'Increment'
-          ),
-          React.createElement(
-            'button',
-            { onClick: () => onClick(-1) },
-            'Decrement'
-          )
+        // return React.createElement(
+        //   'div',
+        //   { class: 'counter' },
+        //   React.createElement('h1', null, count),
+        //   React.createElement(
+        //     'button',
+        //     { onClick: () => onClick(1) },
+        //     'Increment'
+        //   ),
+        //   React.createElement(
+        //     'button',
+        //     { onClick: () => onClick(-1) },
+        //     'Decrement'
+        //   )
+        // );
+
+        return (
+          <div class="counter">
+            <h1 id="counter">{count}</h1>
+            <button onClick={() => onClick(1)}>Increment</button>
+            <button onClick={() => onClick(1)}>Decrement</button>
+          </div>
         );
       };
 
@@ -89,7 +97,7 @@
       const root = ReactDOM.createRoot(document.getElementById('root'));
 
       // Render the counter component into the browser's DOM.
-      root.render(<Counter />);
+      root.render(Counter());
     </script>
   </body>
 </html>
