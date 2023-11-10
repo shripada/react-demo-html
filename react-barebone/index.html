@@ -50,12 +50,21 @@
 
     <script type="text/babel">
       // Create a simple counter component using pure React.createElement
-      const counter = React.createElement(
-        'div',
-        { class: 'counter' },
-        React.createElement('h1', null, '0'),
-        React.createElement('button', null, 'Increment'),
-        React.createElement('button', null, 'Decrement')
+      //   const counter = React.createElement(
+      //     'div',
+      //     { class: 'counter' },
+      //     React.createElement('h1', null, '0'),
+      //     React.createElement('button', null, 'Increment'),
+      //     React.createElement('button', null, 'Decrement')
+      //   );
+
+      // JSX syntax is like html, but it's not html
+      const counter = (
+        <div class="counter">
+          <h1 id="counter">0</h1>
+          <button>Increment</button>
+          <button>Decrement</button>
+        </div>
       );
 
       console.info(counter);
