@@ -9,12 +9,13 @@
     <div id="root"></div>
 
     <!-- Include Babel and Babel React preset -->
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
     ></script>
+
     <script
       crossorigin
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
@@ -48,56 +49,48 @@
       }
     </style>
 
-    <script type="text/babel">
+    <script type="text/babel" data-presets="env,react">
       // Create a simple counter component using pure React.createElement
 
-      const Counter = () => {
-        // let count = 0;
-        const [count, setCount] = React.useState(0);
-
-        function onClick(inc) {
-          setCount(count + inc);
-        }
-        // return React.createElement(
-        //   'div',
-        //   { class: 'counter' },
-        //   React.createElement('h1', null, count),
-        //   React.createElement(
-        //     'button',
-        //     { onClick: () => onClick(1) },
-        //     'Increment'
-        //   ),
-        //   React.createElement(
-        //     'button',
-        //     { onClick: () => onClick(-1) },
-        //     'Decrement'
-        //   )
-        // );
-
+      const Counter = (props) => {
         return (
           <div class="counter">
-            <h1 id="counter">{count}</h1>
-            <button onClick={() => onClick(1)}>Increment</button>
-            <button onClick={() => onClick(1)}>Decrement</button>
+            <h1 id="counter">{props.count}</h1>
+            <button onClick={() => props.onClick(props.count + 1)}>
+              Increment
+            </button>
+            <button onClick={() => props.onClick(props.count - 1)}>
+              Decrement
+            </button>
           </div>
         );
       };
 
-      // JSX syntax is like html, but it's not html
-      //   const counter = (
-      //     <div class="counter">
-      //       <h1 id="counter">0</h1>
-      //       <button>Increment</button>
-      //       <button>Decrement</button>
-      //     </div>
-      //   );
+      // Container component to display two counter components and the total of the
+      // two counters
+      const CounterContainer = () => {
+        const [count1, setCount1] = React.useState(0);
+        const [count2, setCount2] = React.useState(0);
+
+        function onClick(inc) {
+          setCount(count + inc);
+        }
+
+        return (
+          <div>
+            <Counter count={count1} onClick={setCount1} />
+            <Counter count={count2} onClick={setCount2} />
+            <h1 id="counter">{count1 + count2}</h1>
+          </div>
+        );
+      };
 
       console.info(Counter);
 
       const root = ReactDOM.createRoot(document.getElementById('root'));
 
       // Render the counter component into the browser's DOM.
-      root.render(Counter());
+      root.render(<CounterContainer />);
     </script>
   </body>
 </html>
