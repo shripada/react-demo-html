@@ -58,7 +58,7 @@
     </script>
 
     <script>
-      function createCounter(state) {
+      function createCounter(state, onClick) {
         // create a div element and then a h1 for counter and two buttons for inc and dec
         // return the div element
         const div = document.createElement('div');
@@ -72,12 +72,14 @@
         incBtn.onclick = () => {
           state.count++;
           h1.innerText = state.count;
+          onClick();
         };
         const decBtn = document.createElement('button');
         decBtn.innerText = 'Decrement';
         decBtn.onclick = () => {
           state.count--;
           h1.innerText = state.count;
+          onClick();
         };
         // append the h1 and buttons to the div
         div.appendChild(h1);
@@ -89,16 +91,23 @@
 
       const counter1State = { count: 0 };
       const counter2State = { count: 0 };
-      const counter1 = createCounter(counter1State);
-      const counter2 = createCounter(counter1State);
+      const counter1 = createCounter(counter1State, onClick);
+      const counter2 = createCounter(counter2State, onClick);
       // append the above to body
       document.body.appendChild(counter1);
       document.body.appendChild(counter2);
 
       // Create a div element for displaying the sum of counts
       const totalDiv = document.createElement('div');
+      totalDiv.style.fontSize = '24px';
+      totalDiv.style.marginLeft = '20px';
       totalDiv.innerText = counter1State.count + counter2State.count;
       document.body.appendChild(totalDiv);
+
+      function onClick() {
+        totalDiv.innerText = counter1State.count + counter2State.count;
+        console.log(counter1State.count + counter2State.count);
+      }
     </script>
   </body>
 </html>
