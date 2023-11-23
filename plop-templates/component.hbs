@@ -1,0 +1,15 @@
+import styles from './{{pascalCase componentName}}.module.css';
+import { {{pascalCase componentName}}Props } from './types';
+
+/**
+  TODO: describe your component here and ensure to have the correct jsx that is specific to your component
+ */
+const {{pascalCase componentName}} = ({ /*TODO destructure props here*/ }: {{pascalCase componentName}}Props) => {
+  return (
+    <div className={styles.{{camelCase componentName}} }>
+        {"component body goes here"}
+    </div>
+  );
+};
+
+export default {{pascalCase componentName}};

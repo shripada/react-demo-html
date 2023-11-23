@@ -1,0 +1,20 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { {{pascalCase componentName}} } from './{{pascalCase componentName}}';
+
+const meta = {
+  title: 'Example/{{pascalCase componentName}}',
+  component: {{pascalCase componentName}},
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+} satisfies Meta<{{pascalCase componentName}}>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// This is just a placeholder story, please add stories relavant to your component.
+// TODO: Remove this comment once you implement actual stories.
+export const Primary: Story = {
+
+};
